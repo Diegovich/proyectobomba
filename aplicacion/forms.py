@@ -9,7 +9,6 @@ class formularioCargaCamioneta(forms.ModelForm):
         widgets = {
             'chofer':forms.TextInput(attrs={'class':'form-control'}),
             'bomba': forms.Select(attrs={'class':'form-select'}),
-            'fechaCarga':forms.DateInput(),
             'litrosCargados': forms.NumberInput(attrs={'class':'form-control'}),
             'kilometrajeActual':forms.NumberInput(attrs={'class':'form-control'})
         }
