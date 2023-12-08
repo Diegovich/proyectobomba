@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<form action="/submit" class="container mt-5 bg-light p-5">
+  <div class="form-group">
+    <label for="fecha">FECHA</label>
+    <input type="date" class="form-control" id="fecha" name="fecha">
+  </div>
+  <div class="form-group">
+    <label for="nombre">NOMBRE DEL TRABAJADOR</label>
+    <input type="text" class="form-control" id="nombre" name="nombre">
+  </div>
+  <div class="form-group">
+    <label for="informe">INFORME</label>
+    <input type="text" class="form-control" id="informe" name="informe">
+  </div>
+  <button type="submit" class="btn btn-primary">BUSCAR INFORMES</button>
+</form>
+
+{% endblock %}

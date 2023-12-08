@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<form action="/submit" class="container mt-5 bg-light p-5">
+  <div class="form-group">
+    <label for="litros">LITROS CARGADOS</label>
+    <input type="text" class="form-control" id="litros" name="litros">
+  </div>
+  <div class="form-group">
+    <label for="fecha">FECHA CARGA</label>
+    <input type="text" class="form-control" id="fecha" name="fecha">
+  </div>
+  <div class="form-group">
+    <label for="restantes">LITROS RESTANTES</label>
+    <input type="text" class="form-control" id="restantes" name="restantes">
+  </div>
+  <div class="form-group">
+    <label for="bomba">BOMBA</label>
+    <select class="form-control" id="bomba" name="bomba">
+      <option value="bomba1">Bomba 1</option>
+      <option value="bomba2">Bomba 2</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-success">REGISTRAR CARGA</button>
+  <button type="submit" class="btn btn-primary">EDITAR CARGA</button>
+</form>
+
+{% endblock %}
