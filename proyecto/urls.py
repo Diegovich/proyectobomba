@@ -27,5 +27,6 @@ urlpatterns = [
     path('informes/', views.informes, name='informes'),
     path('iniciarjornada/', views.iniciarJornada, name='iniciarJornada'),
     path('', views.inicio, name='index'),
+    path('createcargacamioneta/',views.cargaCamioneta,name='cargacamioneta')
 
 ]

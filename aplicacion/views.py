@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.contrib import messages
 from django.views.decorators.cache import never_cache
+
+from aplicacion.forms import formularioCargaCamioneta
 
 
 @never_cache
@@ -19,10 +22,20 @@ def iniciarJornada(request):
     context = {'nombrePagina': 'Iniciar Jornada Laboral'}
     return render(request, 'bombero/iniciarJornada.html', context)
 
-def cargaCamioneta(request):
+def cargaBomba(request):
     context = {'nombrePagina': 'Carga Camioneta'}
     return render(request, 'bombero/cargaCamioneta.html', context)
 
-def cargaBomba(request):
-    context = {'nombrePagina': 'Carga de Bomba'}
-    return render(request, 'bombero/cargaBomba.html', context)
+def cargaCamioneta(request):
+    formulario = formularioCargaCamioneta()
+    if request.method == 'POST':
+        formulario = formularioCargaCamioneta(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, 'carga realizada con exito')
+    data = {
+        'titulo':'Carga de combustible a camioneta',
+        'formulario':formulario,
+        'ruta':'/cargaCamioneta'
+    }
+    return render (request,'create.html',data)

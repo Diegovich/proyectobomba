@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<div class="alert alert-secondary text-center mt-3 mb-3">
+    <h3>{{ titulo }}</h3>
+</div>
+<form method="post">
+    {% csrf_token %}
+    {{ formulario }}
+    <div class="text-end mt-3">
+        <input type="reset" value="Limpiar" class="btn btn-info">
+        <input type="submit" value="Guardar" class="btn btn-success">
+    </div>
+</form>
+
+{% if messages %}    
+    {% for msg in messages %}
+     <script>
+        Swal.fire('{{ msg }}','','success')
+        .then(function(){
+            window.location.href = '{{ ruta }}'
+        })
+     </script>
+    {% endfor %}        
+{% endif %}
+    
+{% endblock contenido %}
