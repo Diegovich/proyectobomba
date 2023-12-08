@@ -26,6 +26,6 @@ urlpatterns = [
     path('registrousuarios/', views.registro, name='registroUsuarios'),
     path('informes/', views.informes, name='informes'),
     path('iniciarjornada/', views.iniciarJornada, name='iniciarJornada'),
-    # path('', views.index, name='index'),
+    path('', views.inicio, name='index'),
 
 ]

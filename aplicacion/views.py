@@ -3,6 +3,10 @@ from django.views.decorators.cache import never_cache
 
 
 @never_cache
+
+def inicio(request):
+    return render(request,'base.html')
+
 def registro(request):
     context = {'nombrePagina': 'Registro de Usuarios'}
     return render(request, 'administrador/registrousuarios.html', context)
