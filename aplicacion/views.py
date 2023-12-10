@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.views.decorators.cache import never_cache
 
 from aplicacion.forms import formularioCargaCamioneta
+from aplicacion.models import CargaCamioneta
 
 
 @never_cache
@@ -39,3 +40,30 @@ def cargaCamioneta(request):
         'ruta':'/cargaCamioneta'
     }
     return render (request,'create.html',data)
+
+def listaCargaCamioneta(request):
+    car = CargaCamioneta.objects.all()
+    data = {
+        'cargasCamioneta' : car
+    }
+    return render(request,'bombero/cargaCamioneta.html', data )
+
+def editarCargaCamioneta(request, id):
+    cargas = CargaCamioneta.objects.get(id=id)
+    formulario = formularioCargaCamioneta(instance=cargas)
+    if request.method == 'POST':
+        formulario = formularioCargaCamioneta(request.POST, instance=cargas)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, 'Carga editada con exito !')
+    data = {
+        'titulo': 'Editar Carga a Camioneta',
+        'formulario' : formulario,
+        'ruta' : '/cargacamioneta'
+    }
+    return render(request, 'create.html', data)
+
+def eliminarCargaCamioneta(request,id):
+    carga = CargaCamioneta.objects.get(id=id)
+    carga.delete()
+    return redirect('/cargacamioneta')
