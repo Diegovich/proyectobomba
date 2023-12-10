@@ -17,6 +17,8 @@ class Administrador(Persona):
     pass
 
 class Bombero(Persona):
+    def __str__(self):
+        return self.nombre
     pass
 
 class Camioneta(models.Model):
@@ -29,8 +31,12 @@ class Chofer(Persona):
     camioneta = models.OneToOneField(Camioneta, on_delete=models.RESTRICT)
 
 class Bomba(models.Model):
+    nombre = models.CharField(max_length=20)
     capacidad = models.PositiveIntegerField(default=2000)
     litrosActuales = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.nombre
 
     def esta_bajo_combustible(self):
         return self.litrosActuales < 150

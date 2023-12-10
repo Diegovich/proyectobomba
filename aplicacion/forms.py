@@ -1,6 +1,6 @@
 from django import forms
 
-from aplicacion.models import CargaCamioneta
+from aplicacion.models import CargaBomba, CargaCamioneta
 
 class formularioCargaCamioneta(forms.ModelForm):
     class Meta:
@@ -15,4 +15,17 @@ class formularioCargaCamioneta(forms.ModelForm):
         labels = {
             'litrosCargados':'Litros Cargados',
             'kilometrajeActual':'Kilometraje Actual'
+        }
+
+class formularioCargaBomba(forms.ModelForm):
+    class Meta:
+        model = CargaBomba
+        fields = '__all__'
+        widgets = {
+            'bomba' : forms.Select(attrs={'class':'form-select'}),
+            'bombero' : forms.Select(attrs={'class':'form-select'}),
+            'litrosCargados' : forms.NumberInput(attrs={'class':'form-control'})
+        }
+        labels = {
+            'litrosCargados' : 'Litros Cargados'
         }
