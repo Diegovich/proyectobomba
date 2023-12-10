@@ -20,13 +20,15 @@ from aplicacion import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cargacamioneta/', views.cargaCamioneta, name='cargaCamioneta'),
     path('accounts/',include('django.contrib.auth.urls')),
     path('cargabomba/', views.cargaBomba, name='cargaBomba'),
     path('registrousuarios/', views.registro, name='registroUsuarios'),
     path('informes/', views.informes, name='informes'),
     path('iniciarjornada/', views.iniciarJornada, name='iniciarJornada'),
     path('', views.inicio, name='index'),
-    path('createcargacamioneta/',views.cargaCamioneta,name='cargacamioneta')
+    path('createcargacamioneta/',views.cargaCamioneta,name='cargacamioneta'),
+    path('cargacamioneta/', views.listaCargaCamioneta, name='cargaCamioneta'),
+    path('editarCargaCamioneta/<int:id>', views.editarCargaCamioneta, name='editarCargaCamioneta'),
+    path('eliminarCargaCamioneta/<int:id>', views.eliminarCargaCamioneta, name='eliminarCargaCamioneta')
 
 ]
